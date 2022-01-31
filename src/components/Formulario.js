@@ -1,6 +1,27 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { CountryContext } from '../context/ContextCountry';
+
 
 const Formulario = () => {
+
+    const { countrys } = useContext(CountryContext);
+
+    console.log(countrys);
+    // console.log(setCountrys);
+
+    const [serch, setSerch ] = useState({
+        nombre : '',
+        categoria : ''
+    });
+
+    //funcion para leer los contenidos
+    const obtenerBusqueda = e => {
+        setSerch({
+            ...serch,
+            [e.target.name] : e.target.value
+        })
+    }
+
     return (
         <form
             className='col-12'
@@ -15,6 +36,7 @@ const Formulario = () => {
                         className='form-control'
                         type="Text"
                         placeholder='Ingrese su Pais Aqui'
+                        onChange={obtenerBusqueda}
                     />
                 </div>
 
@@ -22,8 +44,15 @@ const Formulario = () => {
                     <select
                         className='form-control'
                         name='categoria'
+                        onChange={obtenerBusqueda}
                     >
                         <option value="">-- Seleccionar un Continente</option>
+                        {countrys.map(country => (
+                            <option
+                                key="country.strCategory"
+                                value={country.strCategory}
+                            >{country.strCategory}</option>
+                        ))}
                     </select>
                 </div>
 
