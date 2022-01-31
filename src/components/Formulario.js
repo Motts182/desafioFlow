@@ -1,30 +1,37 @@
 import React, { useContext, useState } from 'react';
 import { CountryContext } from '../context/ContextCountry';
+import { RecetasContext } from '../context/ContextRecetas';
 
 
 const Formulario = () => {
 
     const { countrys } = useContext(CountryContext);
 
-    console.log(countrys);
-    // console.log(setCountrys);
+    const { buscarRecetas, saveConsultar } = useContext(RecetasContext)
 
-    const [serch, setSerch ] = useState({
-        nombre : '',
-        categoria : ''
+    // console.log(countrys);
+    const [serch, setSerch] = useState({
+        nombre: '',
+        categoria: ''
     });
 
     //funcion para leer los contenidos
     const obtenerBusqueda = e => {
+        e.preventDefault()
         setSerch({
             ...serch,
-            [e.target.name] : e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
     return (
         <form
             className='col-12'
+            onSubmit={e => {
+                e.preventDefault();
+                buscarRecetas(serch);
+                saveConsultar(true);
+            }}
         >
             <fieldset className='text-center'>
                 <legend>Buscar estadisticas de covid por Pais</legend>
@@ -43,7 +50,7 @@ const Formulario = () => {
                 <div className='col-md-4'>
                     <select
                         className='form-control'
-                        name='categoria'
+                        name='continente'
                         onChange={obtenerBusqueda}
                     >
                         <option value="">-- Seleccionar un Continente</option>
