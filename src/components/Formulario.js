@@ -5,23 +5,18 @@ import { RecetasContext } from '../context/ContextRecetas';
 
 const Formulario = () => {
 
+    //Borrar
     const { countrys } = useContext(CountryContext);
 
-    const { buscarRecetas, saveConsultar } = useContext(RecetasContext)
+    const { receta, buscarRecetas, saveConsultar, setReceta } = useContext(RecetasContext);
 
-    // console.log(countrys);
-    const [serch, setSerch] = useState({
-        nombre: '',
-        categoria: ''
-    });
+    const [continent, setContinent] = useState("");
 
     //funcion para leer los contenidos
     const obtenerBusqueda = e => {
         e.preventDefault()
-        setSerch({
-            ...serch,
-            [e.target.name]: e.target.value
-        })
+
+        setContinent(e.target.value);
     }
 
     return (
@@ -29,37 +24,35 @@ const Formulario = () => {
             className='col-12'
             onSubmit={e => {
                 e.preventDefault();
-                buscarRecetas(serch);
+
+                let fill = Object.values(countrys)
+                    .filter(c => c.All.country !== undefined)
+                    .filter(c => c.All.continent === continent)
+
+                setReceta(fill);
+
                 saveConsultar(true);
+
             }}
         >
             <fieldset className='text-center'>
                 <legend>Buscar estadisticas de covid por Pais</legend>
             </fieldset>
             <div className='row mt-4'>
-                <div className='col-md-4'>
-                    <input
-                        name='nombre'
-                        className='form-control'
-                        type="Text"
-                        placeholder='Ingrese su Pais Aqui'
-                        onChange={obtenerBusqueda}
-                    />
-                </div>
 
-                <div className='col-md-4'>
+                <div className='col-md-8'>
                     <select
                         className='form-control'
                         name='continente'
                         onChange={obtenerBusqueda}
                     >
                         <option value="">-- Seleccionar un Continente</option>
-                        {countrys.map(country => (
-                            <option
-                                key="country.strCategory"
-                                value={country.strCategory}
-                            >{country.strCategory}</option>
-                        ))}
+                        <option value="Europe">Europe</option>
+                        <option value="Asia">Asia</option>
+                        <option value="Africa">Africa</option>
+                        <option value="North America">North America</option>
+                        <option value="South America">South America</option>
+                        <option value="Oceania">Oceania</option>
                     </select>
                 </div>
 

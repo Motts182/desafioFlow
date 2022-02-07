@@ -13,11 +13,12 @@ const CountryProvider = (props) => {
     //call api
     useEffect(() => {
         const getCountrys = async () => {
-            const url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
+
+            const url = 'https://covid-api.mmediagroup.fr/v1/cases';
 
             const countrys = await axios.get(url);
 
-            setCountrys(countrys.data.drinks);
+            setCountrys(countrys.data);
         }
 
         getCountrys();
@@ -27,7 +28,7 @@ const CountryProvider = (props) => {
     return (
         <CountryContext.Provider
             value={{
-                countrys
+                countrys,
             }}
         >
             {props.children}
