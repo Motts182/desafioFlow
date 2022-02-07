@@ -10,19 +10,23 @@ const CountryProvider = (props) => {
     //create state context
     const [countrys, setCountrys] = useState([]);
 
+    const [first, setFirst] = useState(true);
+
     //call api
     useEffect(() => {
-        const getCountrys = async () => {
+        if (first) {
+            const getCountrys = async () => {
 
-            const url = 'https://covid-api.mmediagroup.fr/v1/cases';
+                const url = 'https://covid-api.mmediagroup.fr/v1/cases';
 
-            const countrys = await axios.get(url);
+                const countrys = await axios.get(url);
 
-            setCountrys(countrys.data);
+                setCountrys(countrys.data);
+
+            }
+            getCountrys();
         }
-
-        getCountrys();
-    })
+    },[first])
 
 
     return (

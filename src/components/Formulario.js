@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { CountryContext } from '../context/ContextCountry';
-import { RecetasContext } from '../context/ContextRecetas';
+import { ListaContext } from '../context/ContextLista';
 
 
 const Formulario = () => {
@@ -8,30 +8,39 @@ const Formulario = () => {
     //Borrar
     const { countrys } = useContext(CountryContext);
 
-    const { receta, buscarRecetas, saveConsultar, setReceta } = useContext(RecetasContext);
+    const { setLista } = useContext(ListaContext);
 
     const [continent, setContinent] = useState("");
 
-    //funcion para leer los contenidos
     const obtenerBusqueda = e => {
         e.preventDefault()
 
         setContinent(e.target.value);
     }
 
+    useEffect(() => {
+        setLista(countrys);
+    }, [countrys]);
+
     return (
         <form
             className='col-12'
             onSubmit={e => {
                 e.preventDefault();
+                let fill;
 
-                let fill = Object.values(countrys)
-                    .filter(c => c.All.country !== undefined)
-                    .filter(c => c.All.continent === continent)
+                console.log(continent)
 
-                setReceta(fill);
+                if (continent !== "all") {
+                    fill = Object.values(countrys)
+                        .filter(c => c.All.country !== undefined)
+                        .filter(c => c.All.continent === continent)
+                } else {
+                    fill = Object.values(countrys)
+                        .filter(c => c.All.country !== undefined)
+                }
 
-                saveConsultar(true);
+                setLista(fill);
 
             }}
         >
@@ -46,7 +55,8 @@ const Formulario = () => {
                         name='continente'
                         onChange={obtenerBusqueda}
                     >
-                        <option value="">-- Seleccionar un Continente</option>
+                        <option value="all">-- Seleccionar un Continente</option>
+                        <option value="all">Todos Los Paises</option>¡
                         <option value="Europe">Europe</option>
                         <option value="Asia">Asia</option>
                         <option value="Africa">Africa</option>

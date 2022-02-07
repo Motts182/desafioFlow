@@ -1,17 +1,17 @@
 import React, { useContext } from 'react';
 import Item from './Item';
-import { RecetasContext } from '../context/ContextRecetas';
+import { ListaContext } from '../context/ContextLista';
 
 const Lista = () => {
     
     //extract info
-    const { receta } = useContext(RecetasContext);
+    const { lista } = useContext(ListaContext);
 
     return (
 
         <div className='row mt-5'>
             {
-                Object.values(receta)
+                Object.values(lista)
                     .filter(c => c.All.country !== undefined)
                     .map(country => (
                         <Item

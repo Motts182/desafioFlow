@@ -4,15 +4,13 @@ import Formulario from './components/Formulario';
 import Lista from './components/Lista';
 
 import CountryProvider from './context/ContextCountry';
-import RecetasProvider from './context/ContextRecetas';
-import ModalProvider from './context/ContextModal';
+import ListaProvider from './context/ContextLista';
 
 
 function App() {
   return (
     <CountryProvider>
-      <RecetasProvider>
-        <ModalProvider>
+      <ListaProvider>
           <Header />
           <div className='container mt-5'>
             <div className='row'>
@@ -20,8 +18,7 @@ function App() {
             </div>
             <Lista />
           </div>
-        </ModalProvider>
-      </RecetasProvider>
+      </ListaProvider>
     </CountryProvider>
   );
 }

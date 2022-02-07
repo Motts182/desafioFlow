@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import { ContextModal } from '../context/ContextModal';
 import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -27,14 +26,9 @@ const useStyles = makeStyles(theme => ({
 
 const Item = ({ country }) => {
 
-    const {setIdCountry} = useContext(ContextModal);
-
     //CFG MaterialUI
     const [modalStyle] = useState(getModalStyle);
     const [open, setOpen] = useState(false);
-
-    const [incident, setIncident] = useState(0);
-
     const classes = useStyles();
 
     const handleOpen = () => {
@@ -44,6 +38,8 @@ const Item = ({ country }) => {
     const handleClose = () => {
         setOpen(false);
     }
+
+    const [incident, setIncident] = useState(0);
 
     const calIncident = () => {
         setIncident(((country.All.confirmed * 100000) / country.All.population).toFixed())
@@ -65,7 +61,6 @@ const Item = ({ country }) => {
                         type='button'
                         className='btn btn-block btn-primary'
                         onClick={() => {
-                            setIdCountry(country.All.country);
                             calIncident();
                             handleOpen();
                         }}
@@ -78,7 +73,6 @@ const Item = ({ country }) => {
                 <Modal
                     open={open}
                     onClose={() => {
-                        setIdCountry(null);
                         handleClose();
                     }}
                 >
