@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react';
-import Item from './Item';
 import { ListaContext } from '../context/ContextLista';
 import { CountryContext } from '../context/ContextCountry';
 
@@ -30,26 +29,70 @@ const Lista = () => {
             {render ?
                 (<div className='col-md-4 mb-3'>
                     <div className='card'>
-                        <h2 className='card-header'></h2>
+                        <h2 className='card-header'>Loading...</h2>
                         <p />
-                        <div className='ml-4'>{`Temperatura:`}</div>
+                        <div className='ml-4 mb-4'>Loading...</div>
                         <p />
-                        <div className='ml-4'>{`Sensacion: `}</div>
-                        <p />
-                        <div className='ml-4 mb-4'>{`Humedad: `}</div>
                     </div>
                 </div>) :
-                (<div className='col-md-4 mb-3'>
-                    <div className='card'>
-                        <h2 className='card-header'>{`${countrys.name}`}</h2>
-                        <p />
-                        <div className='ml-4'>{`Temperatura: ${countrys.main.temp}`}</div>
-                        <p />
-                        <div className='ml-4'>{`Sensacion: ${countrys.main.feels_like}`}</div>
-                        <p />
-                        <div className='ml-4 mb-4'>{`Humedad: ${countrys.main.humidity}`}</div>
+                (
+                    <div className='row mb-3'>
+                        <div className=' col-md-12 card '>
+                            <h2 className='card-header'>{`Clima hoy: ${countrys.name} `}</h2>
+                            <p />
+                            <div className='ml-4'>{`Temperatura Actual: ${countrys.main.temp}`}</div>
+                            <p />
+                            <div className='ml-4'>{`Sensacion: ${countrys.main.feels_like}`}</div>
+                            <p />
+                            <div className='ml-4 mb-4'>{`Humedad: ${countrys.main.humidity}`}</div>
+                        </div>
+                        <div className=' col-md-4 card '>
+                            <h2 className='card-header'>{`${countrys.name}`}</h2>
+                            <p />
+                            <div className='ml-4'>{`Temperatura: ${countrys.main.temp}`}</div>
+                            <p />
+                            <div className='ml-4'>{`Sensacion: ${countrys.main.feels_like}`}</div>
+                            <p />
+                            <div className='ml-4 mb-4'>{`Humedad: ${countrys.main.humidity}`}</div>
+                        </div>
+                        <div className=' col-md-4 card '>
+                            <h2 className='card-header'>{`${countrys.name}`}</h2>
+                            <p />
+                            <div className='ml-4'>{`Temperatura: ${countrys.main.temp}`}</div>
+                            <p />
+                            <div className='ml-4'>{`Sensacion: ${countrys.main.feels_like}`}</div>
+                            <p />
+                            <div className='ml-4 mb-4'>{`Humedad: ${countrys.main.humidity}`}</div>
+                        </div>
+                        <div className=' col-md-4 card '>
+                            <h2 className='card-header'>{`${countrys.name}`}</h2>
+                            <p />
+                            <div className='ml-4'>{`Temperatura: ${countrys.main.temp}`}</div>
+                            <p />
+                            <div className='ml-4'>{`Sensacion: ${countrys.main.feels_like}`}</div>
+                            <p />
+                            <div className='ml-4 mb-4'>{`Humedad: ${countrys.main.humidity}`}</div>
+                        </div>
+                        <div className=' col-md-4 card '>
+                            <h2 className='card-header'>{`${countrys.name}`}</h2>
+                            <p />
+                            <div className='ml-4'>{`Temperatura: ${countrys.main.temp}`}</div>
+                            <p />
+                            <div className='ml-4'>{`Sensacion: ${countrys.main.feels_like}`}</div>
+                            <p />
+                            <div className='ml-4 mb-4'>{`Humedad: ${countrys.main.humidity}`}</div>
+                        </div>
+                        <div className=' col-md-4 card '>
+                            <h2 className='card-header'>{`${countrys.name}`}</h2>
+                            <p />
+                            <div className='ml-4'>{`Temperatura: ${countrys.main.temp}`}</div>
+                            <p />
+                            <div className='ml-4'>{`Sensacion: ${countrys.main.feels_like}`}</div>
+                            <p />
+                            <div className='ml-4 mb-4'>{`Humedad: ${countrys.main.humidity}`}</div>
+                        </div>
                     </div>
-                </div>)
+                )
             }
 
         </div>
