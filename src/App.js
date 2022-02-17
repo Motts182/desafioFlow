@@ -14,7 +14,7 @@ function App() {
           <Header />
           <div className='container mt-5'>
             <div className='row'>
-              <Formulario />
+              <Formulario/>
             </div>
             <Lista />
           </div>
