@@ -51,28 +51,28 @@ const Lista = () => {
                         <div className=' col-md-3 card '>
                             <h2 className='card-header'>{`Clima ${countrys.name} dia `} {`${forecast.list[0].dt_txt} `}</h2>
                             <p />
-                            <div className='ml-4'>{`Temperatura Actual: ${forecast.list[0].main.temp}`}</div>
+                            <div className='ml-4'>{`Temperatura : ${forecast.list[0].main.temp}`}</div>
                             <p />
                         </div>
                         <div className=' col-md-3 card '>
                             <h2 className='card-header'>{`Clima ${countrys.name} dia `} {`${forecast.list[3].dt_txt} `}</h2>
                             <p />
-                            <div className='ml-4'>{`Temperatura Actual: ${forecast.list[3].main.temp}`}</div>
+                            <div className='ml-4'>{`Temperatura : ${forecast.list[3].main.temp}`}</div>
                             <p />
                         </div>                        <div className=' col-md-3 card '>
                             <h2 className='card-header'>{`Clima ${countrys.name} dia `} {`${forecast.list[11].dt_txt} `}</h2>
                             <p />
-                            <div className='ml-4'>{`Temperatura Actual: ${forecast.list[11].main.temp}`}</div>
+                            <div className='ml-4'>{`Temperatura : ${forecast.list[11].main.temp}`}</div>
                             <p />
                         </div>                        <div className=' col-md-3 card '>
                             <h2 className='card-header'>{`Clima ${countrys.name} dia `} {`${forecast.list[19].dt_txt} `}</h2>
                             <p />
-                            <div className='ml-4'>{`Temperatura Actual: ${forecast.list[19].main.temp}`}</div>
+                            <div className='ml-4'>{`Temperatura : ${forecast.list[19].main.temp}`}</div>
                             <p />
                         </div>                        <div className=' col-md-3 card '>
                             <h2 className='card-header'>{`Clima ${countrys.name} dia `} {`${forecast.list[27].dt_txt} `}</h2>
                             <p />
-                            <div className='ml-4'>{`Temperatura Actual: ${forecast.list[27].main.temp}`}</div>
+                            <div className='ml-4'>{`Temperatura : ${forecast.list[27].main.temp}`}</div>
                             <p />
                         </div>
 
