@@ -8,31 +8,32 @@ export const CountryContext = createContext();
 const CountryProvider = (props) => {
 
     //create state context
-    const [countrys, setCountrys] = useState([]);
+    const [countrys, setCountrys] = useState(null);
 
-    const [first, setFirst] = useState(true);
+    const [citi, setCiti] = useState("mendoza");
 
-    //call api
     useEffect(() => {
-        if (first) {
-            const getCountrys = async () => {
+        const getCountrys = async () => {
 
-                const url = 'https://covid-api.mmediagroup.fr/v1/cases';
+            // console.log(citi);
 
-                const countrys = await axios.get(url);
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${citi}&appid=af02f458fe37a778cc2772725d179030`
 
-                setCountrys(countrys.data);
+            const countrys = await axios.get(url);
 
-            }
-            getCountrys();
+            setCountrys(countrys.data);
+
         }
-    },[first])
+        getCountrys();
+
+    }, [citi])
 
 
     return (
         <CountryContext.Provider
             value={{
                 countrys,
+                setCiti
             }}
         >
             {props.children}

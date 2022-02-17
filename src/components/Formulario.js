@@ -5,8 +5,7 @@ import { ListaContext } from '../context/ContextLista';
 
 const Formulario = () => {
 
-    //Borrar
-    const { countrys } = useContext(CountryContext);
+    const { countrys, setFirst, setCiti } = useContext(CountryContext);
 
     const { setLista } = useContext(ListaContext);
 
@@ -20,32 +19,20 @@ const Formulario = () => {
 
     useEffect(() => {
         setLista(countrys);
-    }, [countrys]);
+    });
 
     return (
         <form
             className='col-12'
             onSubmit={e => {
+
                 e.preventDefault();
-                let fill;
 
-                console.log(continent)
-
-                if (continent !== "all") {
-                    fill = Object.values(countrys)
-                        .filter(c => c.All.country !== undefined)
-                        .filter(c => c.All.continent === continent)
-                } else {
-                    fill = Object.values(countrys)
-                        .filter(c => c.All.country !== undefined)
-                }
-
-                setLista(fill);
-
+                setCiti(continent);
             }}
         >
             <fieldset className='text-center'>
-                <legend>Buscar estadisticas de covid por Pais</legend>
+                <legend>Buscar Clima por Ciudad</legend>
             </fieldset>
             <div className='row mt-4'>
 
@@ -55,14 +42,12 @@ const Formulario = () => {
                         name='continente'
                         onChange={obtenerBusqueda}
                     >
-                        <option value="all">-- Seleccionar un Continente</option>
-                        <option value="all">Todos Los Paises</option>¡
-                        <option value="Europe">Europe</option>
-                        <option value="Asia">Asia</option>
-                        <option value="Africa">Africa</option>
-                        <option value="North America">North America</option>
-                        <option value="South America">South America</option>
-                        <option value="Oceania">Oceania</option>
+                        <option value="mendoza">Mendoza</option>
+                        <option value="formosa">Formosa</option>
+                        <option value="rosario">Rosario</option>
+                        <option value="neuquen">Neuquen</option>
+                        <option value="salta">Salta</option>
+
                     </select>
                 </div>
 

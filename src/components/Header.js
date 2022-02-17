@@ -3,7 +3,7 @@ import React from 'react';
 const Header = () => {
     return (
         <header className='bg-alert'>
-            <h1>Buscador de Casos de Covid por Pais</h1>
+            <h1>Buscador de Pronostico por Ciudad 5 dias</h1>
         </header>
     );
 }
