@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { CountryContext } from '../context/ContextCountry';
 import { ListaContext } from '../context/ContextLista';
 
-
 const Formulario = () => {
 
     const { countrys, setFirst, setCiti } = useContext(CountryContext);
